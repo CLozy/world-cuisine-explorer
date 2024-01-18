@@ -1,6 +1,6 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Search } from "./";
+import { Search, Filter } from "./";
 
 import "swiper/css";
 
@@ -12,9 +12,8 @@ const Caroussel = () => {
           <img src="/images/2.jpg" />
         </SwiperSlide>
       </Swiper>
-     
+      <Filter />
       <div className=" h-[50%]  bg-gradient-to-b from-lime-500 " />
-     
     </div>
   );
 };

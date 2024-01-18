@@ -1,5 +1,5 @@
 import React from "react";
-import { Caroussel, CuisineCard, Search } from "./";
+import { Caroussel, CuisineCard, Search, Filter } from "./";
 import { useSelector } from "react-redux";
 import { RootState } from "../redux/Store";
 
@@ -29,6 +29,7 @@ const CuisinePage = () => {
         })} */}
 
         <Caroussel />
+        
 
         <div className="grid grid-cols-2 xl:grid-cols-3 bg-white">
           {meals?.map((meal) => {
