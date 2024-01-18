@@ -1,11 +1,15 @@
-import React from 'react'
+import React from "react";
+import { Caroussel } from "./";
 
 const CuisinePage = () => {
   return (
-    <div>
-      <h1 className="text-3xl font-bold underline">Hello world!</h1>
+    <div className="bg-stone-300">
+      <div className="min-w-[1000px] max-w-[1500px] m-auto bg-lime-300">
+        Cuisines
+        <Caroussel />
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default CuisinePage
+export default CuisinePage;
