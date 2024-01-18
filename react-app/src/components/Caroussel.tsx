@@ -1,14 +1,20 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Search } from "./";
+
+import "swiper/css";
 
 const Caroussel = () => {
   return (
-    <div className="h-[160px] bg-lime-100">
+    <div className="h-[600px] bg-white ">
       <Swiper loop={true} spaceBetween={0} className="h-[50%]">
         <SwiperSlide>
-          <img src="/images/1.jpg" />
+          <img src="/images/2.jpg" />
         </SwiperSlide>
       </Swiper>
+     
+      <div className=" h-[50%]  bg-gradient-to-b from-lime-500 " />
+     
     </div>
   );
 };
