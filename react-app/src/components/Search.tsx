@@ -13,9 +13,9 @@ import { searchMeals } from "../redux/slices/MealsSlice";
 
 const Search: React.FC = () => {
   const dispatch = useDispatch();
-    const meals = useSelector((state: RootState) => state.meals.meals);
+  const meals = useSelector((state: RootState) => state.meals.meals);
 
-    console.log("SEARCH", meals)
+  console.log("SEARCH", meals);
   //   const searchData = useSelector((state: RootState) => state.searchData);
 
   //   const handleSearch = async () => {
@@ -63,7 +63,7 @@ const Search: React.FC = () => {
           id="default-search"
           //   value={query.value}
           onChange={(e) => dispatch(searchMeals(e.target.value))}
-          className=" block w-full p-4 ps-10 text-sm   rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500  dark:border-gray-600 dark:placeholder-black-400 dark:text-white dark:focus:ring-lime-500 dark:focus:border-lime-500"
+          className=" block w-full p-4 ps-10 text-sm   rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500  dark:border-gray-600 dark:placeholder-black-400 dark:text-black dark:focus:ring-lime-500 dark:focus:border-lime-500"
           placeholder="Search for dishes by name..."
           required
         />
