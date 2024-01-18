@@ -1,7 +1,37 @@
 import React from "react";
 import { FaSearch } from "react-icons/fa";
+import { useDispatch, useSelector } from "react-redux";
+import { setQuery, fetchDataSuccess } from "../redux/Actions";
+import { RootState } from "../redux/Store";
+import {
+  Query,
+  //   SearchDish,
+  //   SET_QUERY,
+  //   FETCH_DATA_SUCCESS,
+} from "../redux/ActionTypes";
+import { searchMeals } from "../redux/slices/MealsSlice";
 
-const Search = () => {
+const Search: React.FC = () => {
+  const dispatch = useDispatch();
+    const meals = useSelector((state: RootState) => state.meals.meals);
+
+    console.log("SEARCH", meals)
+  //   const searchData = useSelector((state: RootState) => state.searchData);
+
+  //   const handleSearch = async () => {
+  //     const newQuery = { value: 'YourSearchValue' };
+  //     dispatch(setQuery(newQuery));
+
+  //     // Assuming fetchData is an asynchronous function that fetches data based on the query
+  //     fetchData(newQuery)
+  //       .then((data) => {
+  //         dispatch(fetchDataSuccess(data));
+  //       })
+  //       .catch((error) => {
+  //         // Handle errors
+  //         console.error('Error fetching data:', error);
+  //       });
+  //   };
   return (
     <form>
       <label
@@ -31,12 +61,15 @@ const Search = () => {
         <input
           type="search"
           id="default-search"
+          //   value={query.value}
+          onChange={(e) => dispatch(searchMeals(e.target.value))}
           className=" block w-full p-4 ps-10 text-sm   rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500  dark:border-gray-600 dark:placeholder-black-400 dark:text-white dark:focus:ring-lime-500 dark:focus:border-lime-500"
           placeholder="Search for dishes by name..."
           required
         />
         <button
           type="submit"
+          //   onClick={handleSearch}
           className="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
         >
           Search
