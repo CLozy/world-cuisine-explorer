@@ -1,14 +1,14 @@
 import React from "react";
 import { FaSearch } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
-import { setQuery, fetchDataSuccess } from "../redux/Actions";
+// import { setQuery, fetchDataSuccess } from "../redux/Actions";
 import { RootState } from "../redux/Store";
-import {
-  Query,
+// import {
+  // Query,
   //   SearchDish,
   //   SET_QUERY,
   //   FETCH_DATA_SUCCESS,
-} from "../redux/ActionTypes";
+// } from "../redux/ActionTypes";
 import { searchMeals } from "../redux/slices/MealsSlice";
 
 const Search: React.FC = () => {

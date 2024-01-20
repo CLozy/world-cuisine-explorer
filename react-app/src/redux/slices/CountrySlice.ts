@@ -1,27 +1,27 @@
+// 
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-export interface Country {
+export interface Meal {
     strArea: string;
-  
 }
 
-type CountryState = {
-  country: Country[];
+type MealState = {
+  meals: Meal[];
   
 };
 
-const initialState: CountryState = {
-  country: [],
+const initialState: MealState = {
+  meals: [],
 };
 
 export const getCountry = createAsyncThunk(
-  "meals/fetchCountry",
-  async (thunkAPI) => {
+  "meals/fetchMealsByQuery",
+  async ( thunkAPI) => {
     const endpoint = `https://www.themealdb.com/api/json/v1/1/list.php?a=list`;
     const response = await fetch(endpoint);
-    const { country } = (await response.json()) ?? {};
+    const { meals } = (await response.json()) ?? {};
 
-    return country ?? [];
+    return meals ?? [];
   }
 );
 
@@ -29,17 +29,18 @@ const CountrySlice = createSlice({
   name: "countrySlice",
   initialState,
   reducers: {
-    loadCountry: (state, action) => {
-      state.country = action.payload;
+    loadMeals: (state, action) => {
+      state.meals = action.payload;
     },
     
   },
   extraReducers: (builder) => {
     builder.addCase(getCountry.fulfilled, (state, action) => {
-      state.country = action.payload;
+      state.meals = action.payload;
     });
   },
 });
 
-export const { loadCountry } = CountrySlice.actions;
+export const { loadMeals } = CountrySlice.actions;
 export default CountrySlice.reducer;
+

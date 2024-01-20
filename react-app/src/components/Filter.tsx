@@ -1,35 +1,50 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { getCountry } from "../redux/slices/CountrySlice";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../redux/Store";
+import { getIngredients } from "../redux/slices/IngredientSlice";
 
-interface FilterProps {}
+// interface FilterProps {}
 
-const Filter: React.FC<FilterProps> = () => {
+const Filter: React.FC = () => {
   const [selectedOption, setSelectedOption] = useState<string>("country");
+  const dispatch = useDispatch();
+
+  const country = useSelector((state: RootState) => state.country.meals);
+  const ingredients = useSelector(
+    (state: RootState) => state.ingredients.ingredients
+  );
 
   const handleOptionChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedOption(event.target.value);
-    dispatch(getCountry());
   };
-  const dispatch = useDispatch();
-  const country = useSelector((state: RootState) => state.country.country);
-  //   dispatch(getCountry());
-  console.log("Get", country);
+
+//   console.log("Get", country);
+//   console.log("Get", ingredients);
+  //   console.log(country.meals);
+
+  useEffect(() => {
+    if (selectedOption === "country") {
+      dispatch(getCountry());
+    } else if (selectedOption === "ingredient") {
+      dispatch(getIngredients());
+    }
+  }, [dispatch, selectedOption]);
 
   const renderOptions = () => {
     if (selectedOption === "country") {
-      // Render country options
-
+            // Render country options
       return (
         <select>
-          <option value="usa">USA</option>
-          <option value="uk">UK</option>
-          {/* Add more countries as needed */}
+          {country?.map((meal) => (
+            <option key={meal.strArea} value={meal.strArea}>
+              {meal.strArea}
+            </option>
+          ))}
         </select>
       );
     } else if (selectedOption === "ingredient") {
-      // Render ingredient options
+           // Render ingredient options
       return (
         <select>
           <option value="tomato">Tomato</option>
