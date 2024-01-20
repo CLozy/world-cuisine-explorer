@@ -13,20 +13,6 @@ const CuisinePage = () => {
           World Cusine Explorer
         </h1>
 
-        {/* {meals?.map((meal) => {
-          return (
-            
-            <CuisineCard
-              key={meal.idMeal}
-              title={meal.strMeal}
-              img={meal.strMealThumb}
-              description={
-                "Beef is the culinary name for meat from cattle, particularly skeletal muscle. Humans have been eating beef since prehistoric times.[1] Beef is a source of high-quality protein and essential nutrients.[2]"
-              }
-            />
-           
-          );
-        })} */}
 
         <Caroussel />
         
