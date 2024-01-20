@@ -13,18 +13,16 @@ const CuisinePage = () => {
           World Cusine Explorer
         </h1>
 
-
         <Caroussel />
-        
 
-        <div className="grid grid-cols-2 xl:grid-cols-3 bg-white">
+        <div className="grid grid-cols-1 xl:grid-cols-2 bg-white">
           {meals?.map((meal) => {
             return (
               <CuisineCard
                 key={meal.idMeal}
                 title={meal.strMeal}
                 img={meal.strMealThumb}
-                description={""}
+                description={meal.strInstructions}
               />
             );
           })}

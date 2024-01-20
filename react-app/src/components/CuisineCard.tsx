@@ -27,14 +27,3 @@ const CuisineCard: React.FC<CuisineCardProps> = ({
 };
 
 export default CuisineCard;
-{
-  /* <div className="h-[420px] bg-white rounded-md shadow-md p-4 m-4 flex flex-col">
-      <div className="text-lg xl:text-xl font-semibold ml-4 mt-4">{title}</div>
-      <div className="h-[300px] m-4">
-        <img src={img} />
-      </div>
-      <article className="text-wrap">
-        <p>{description}</p>
-      </article>
-    </div> */
-}
