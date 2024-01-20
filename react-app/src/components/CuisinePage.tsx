@@ -40,6 +40,8 @@ const CuisinePage = () => {
                   img={meal.strMealThumb}
                   description={meal.strInstructions}
                   ingredients={ingredients}
+                  country = {meal.strArea}
+                  category = {meal.strCategory}
                 />
               );
             })}
