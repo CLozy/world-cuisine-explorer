@@ -12,7 +12,7 @@ const Filter: React.FC = () => {
 
   const country = useSelector((state: RootState) => state.country.meals);
   const ingredients = useSelector(
-    (state: RootState) => state.ingredients.ingredients
+    (state: RootState) => state.ingredients.meals
   );
 
   const handleOptionChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -45,13 +45,15 @@ const Filter: React.FC = () => {
       );
     } else if (selectedOption === "ingredient") {
            // Render ingredient options
-      return (
-        <select>
-          <option value="tomato">Tomato</option>
-          <option value="onion">Onion</option>
-          {/* Add more ingredients as needed */}
-        </select>
-      );
+           return (
+            <select>
+              {ingredients?.map((meal) => (
+                <option key={meal.strIngredient} value={meal.strIngredient}>
+                  {meal.strIngredient}
+                </option>
+              ))}
+            </select>
+          );
     }
 
     return null;

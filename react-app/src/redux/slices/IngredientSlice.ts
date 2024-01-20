@@ -1,30 +1,31 @@
+
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-export interface Ingredients {
+export interface Meal {
     idIngredient: string;
     strIngredient: string;
     strDescription: string;
     strType: string;
-  
+    
 }
 
-type CountryState = {
-    ingredients: Ingredients[];
+type MealState = {
+  meals: Meal[];
   
 };
 
-const initialState: CountryState = {
-    ingredients: [],
+const initialState: MealState = {
+  meals: [],
 };
 
 export const getIngredients = createAsyncThunk(
-  "meals/fetchIngredients",
-  async (thunkAPI) => {
+  "meals/fetchMealsByQuery",
+  async ( thunkAPI) => {
     const endpoint = `https://www.themealdb.com/api/json/v1/1/list.php?i=list`;
     const response = await fetch(endpoint);
-    const { ingredients } = (await response.json()) ?? {};
+    const { meals } = (await response.json()) ?? {};
 
-    return ingredients?? [];
+    return meals ?? [];
   }
 );
 
@@ -32,17 +33,18 @@ const IngredientsSlice = createSlice({
   name: "ingredientsSlice",
   initialState,
   reducers: {
-    loadIngredients: (state, action) => {
-      state.ingredients = action.payload;
+    loadMeals: (state, action) => {
+      state.meals = action.payload;
     },
     
   },
   extraReducers: (builder) => {
     builder.addCase(getIngredients.fulfilled, (state, action) => {
-      state.ingredients = action.payload;
+      state.meals = action.payload;
     });
   },
 });
 
-export const { loadIngredients } = IngredientsSlice.actions;
+export const { loadMeals } = IngredientsSlice.actions;
 export default IngredientsSlice.reducer;
+
