@@ -3,12 +3,7 @@ import { FaSearch } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 // import { setQuery, fetchDataSuccess } from "../redux/Actions";
 import { RootState } from "../redux/Store";
-// import {
-  // Query,
-  //   SearchDish,
-  //   SET_QUERY,
-  //   FETCH_DATA_SUCCESS,
-// } from "../redux/ActionTypes";
+
 import { searchMeals } from "../redux/slices/MealsSlice";
 
 const Search: React.FC = () => {
@@ -16,22 +11,7 @@ const Search: React.FC = () => {
   const meals = useSelector((state: RootState) => state.meals.meals);
 
   console.log("SEARCH", meals);
-  //   const searchData = useSelector((state: RootState) => state.searchData);
 
-  //   const handleSearch = async () => {
-  //     const newQuery = { value: 'YourSearchValue' };
-  //     dispatch(setQuery(newQuery));
-
-  //     // Assuming fetchData is an asynchronous function that fetches data based on the query
-  //     fetchData(newQuery)
-  //       .then((data) => {
-  //         dispatch(fetchDataSuccess(data));
-  //       })
-  //       .catch((error) => {
-  //         // Handle errors
-  //         console.error('Error fetching data:', error);
-  //       });
-  //   };
   return (
     <form>
       <label
