@@ -1,7 +1,7 @@
 
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-export interface Meal {
+export interface Ingredients {
     idIngredient: string;
     strIngredient: string;
     strDescription: string;
@@ -10,7 +10,7 @@ export interface Meal {
 }
 
 type MealState = {
-  meals: Meal[];
+  meals: Ingredients[];
   
 };
 

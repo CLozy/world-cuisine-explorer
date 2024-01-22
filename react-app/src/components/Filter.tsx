@@ -3,8 +3,10 @@ import { getCountry } from "../redux/slices/CountrySlice";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../redux/Store";
 import { getIngredients } from "../redux/slices/IngredientSlice";
+import { getCountryMeals } from "../redux/slices/CountryFilterSlice";
+import { getIngredientsMeals } from "../redux/slices/IngredientFilterSlice";
 
-// interface FilterProps {}
+
 
 const Filter: React.FC = () => {
   const [selectedOption, setSelectedOption] = useState<string>("country");
@@ -14,14 +16,14 @@ const Filter: React.FC = () => {
   const ingredients = useSelector(
     (state: RootState) => state.ingredients.meals
   );
+  const countryfilter  = useSelector((state: RootState) => state.CountryFilterSlice.meals);
+  const ingredientsfilter  = useSelector((state: RootState) => state.IngredientFilterSlice.meals);
 
   const handleOptionChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setSelectedOption(event.target.value);
+    const selectedValue = event.target.value;
+    setSelectedOption(selectedValue);
+      
   };
-
-//   console.log("Get", country);
-//   console.log("Get", ingredients);
-  //   console.log(country.meals);
 
   useEffect(() => {
     if (selectedOption === "country") {
@@ -33,7 +35,7 @@ const Filter: React.FC = () => {
 
   const renderOptions = () => {
     if (selectedOption === "country") {
-            // Render country options
+      // Render country options
       return (
         <select>
           {country?.map((meal) => (
@@ -44,16 +46,16 @@ const Filter: React.FC = () => {
         </select>
       );
     } else if (selectedOption === "ingredient") {
-           // Render ingredient options
-           return (
-            <select>
-              {ingredients?.map((meal) => (
-                <option key={meal.strIngredient} value={meal.strIngredient}>
-                  {meal.strIngredient}
-                </option>
-              ))}
-            </select>
-          );
+      // Render ingredient options
+      return (
+        <select>
+          {ingredients?.map((meal) => (
+            <option key={meal.strIngredient} value={meal.strIngredient}>
+              {meal.strIngredient}
+            </option>
+          ))}
+        </select>
+      );
     }
 
     return null;

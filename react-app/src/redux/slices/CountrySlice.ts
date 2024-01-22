@@ -1,13 +1,12 @@
-// 
+//
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-export interface Meal {
-    strArea: string;
+export interface Country {
+  strArea: string;
 }
 
 type MealState = {
-  meals: Meal[];
-  
+  meals: Country[];
 };
 
 const initialState: MealState = {
@@ -16,7 +15,7 @@ const initialState: MealState = {
 
 export const getCountry = createAsyncThunk(
   "meals/fetchMealsByQuery",
-  async ( thunkAPI) => {
+  async (thunkAPI) => {
     const endpoint = `https://www.themealdb.com/api/json/v1/1/list.php?a=list`;
     const response = await fetch(endpoint);
     const { meals } = (await response.json()) ?? {};
@@ -32,7 +31,6 @@ const CountrySlice = createSlice({
     loadMeals: (state, action) => {
       state.meals = action.payload;
     },
-    
   },
   extraReducers: (builder) => {
     builder.addCase(getCountry.fulfilled, (state, action) => {
@@ -43,4 +41,3 @@ const CountrySlice = createSlice({
 
 export const { loadMeals } = CountrySlice.actions;
 export default CountrySlice.reducer;
-
