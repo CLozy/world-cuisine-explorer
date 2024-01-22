@@ -1,13 +1,13 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-export interface Meal {
+export interface IngredientsFilter {
   strMeal: string;
   strMealThumb: string;
   idMeal: string;
 }
 
 type MealState = {
-  meals: Meal[];
+  meals: IngredientsFilter[];
 };
 
 const initialState: MealState = {

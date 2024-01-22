@@ -16,8 +16,8 @@ const Filter: React.FC = () => {
   const ingredients = useSelector(
     (state: RootState) => state.ingredients.meals
   );
-  const countryfilter  = useSelector((state: RootState) => state.CountryFilterSlice.meals);
-  const ingredientsfilter  = useSelector((state: RootState) => state.IngredientFilterSlice.meals);
+  const countryfilter  = useSelector((state: RootState) => state.CountryFilter.meals);
+  const ingredientsfilter  = useSelector((state: RootState) => state.IngredientsFilter.meals);
 
   const handleOptionChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedValue = event.target.value;
