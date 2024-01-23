@@ -6,8 +6,6 @@ import { getIngredients } from "../redux/slices/IngredientSlice";
 import { getCountryMeals } from "../redux/slices/CountryFilterSlice";
 import { getIngredientsMeals } from "../redux/slices/IngredientFilterSlice";
 
-
-
 const Filter: React.FC = () => {
   const [selectedOption, setSelectedOption] = useState<string>("country");
   const dispatch = useDispatch();
@@ -16,13 +14,26 @@ const Filter: React.FC = () => {
   const ingredients = useSelector(
     (state: RootState) => state.ingredients.meals
   );
-  const countryfilter  = useSelector((state: RootState) => state.CountryFilter.meals);
-  const ingredientsfilter  = useSelector((state: RootState) => state.IngredientsFilter.meals);
+  const countryfilter = useSelector(
+    (state: RootState) => state.CountryFilter.meals
+  );
+  const ingredientsfilter = useSelector(
+    (state: RootState) => state.IngredientsFilter.meals
+  );
 
   const handleOptionChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedValue = event.target.value;
     setSelectedOption(selectedValue);
-      
+    // dispatch(getCountryMeals(selectedValue));
+    // console.log(selectedValue);
+  };
+  const handleOptionChange1 = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const selectedCountryValue = event.target.value;
+
+    // setSelectedOption(selectedValue);
+    dispatch(getCountryMeals(selectedCountryValue));
+    console.log(selectedCountryValue);
+    console.log(countryfilter);
   };
 
   useEffect(() => {
@@ -37,7 +48,8 @@ const Filter: React.FC = () => {
     if (selectedOption === "country") {
       // Render country options
       return (
-        <select>
+        <select onChange={handleOptionChange1}>
+          <option>All</option>
           {country?.map((meal) => (
             <option key={meal.strArea} value={meal.strArea}>
               {meal.strArea}

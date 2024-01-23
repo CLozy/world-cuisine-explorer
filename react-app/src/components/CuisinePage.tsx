@@ -54,4 +54,4 @@ const CuisinePage = () => {
 
 export default CuisinePage;
 
-// https://www.themealdb.com/images/category/beef.png
+
